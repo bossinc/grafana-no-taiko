@@ -123,15 +123,10 @@ func _on_Timer_timeout():
 	
 func _has_hit(drumHit):
 	var node = $HitStream.get_children()[0]
-<<<<<<< HEAD
 	print(node.global_position.x - 260)
-	var goalXLate = $goal.global_position.x - 20
-	var goalXEarly = $goal.global_position.x + 20
+	var goalXLate = $goal.global_position.x - 25
+	var goalXEarly = $goal.global_position.x + 25
 	if (node.global_position.x >= goalXLate && node.global_position.x <= goalXEarly):
-=======
-
-	if (node.global_position.x >= 275 && node.global_position.x <= 285 ):
->>>>>>> c164b92cd5398db2560180eb5d6306b1c9aebd20
 		node.queue_free()
 		update_combo_streak(1)
 		
