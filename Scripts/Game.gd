@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 var drumObject = preload("res://Scripts/drum.gd")
 
+const LAST_TIME = 5000
+
 const songFile = {
 	"hits": {
 		500: Enums.HitType.Blue,
@@ -13,11 +15,21 @@ const songFile = {
 		1000: Enums.HitType.Blue,
 		2000: Enums.HitType.Red,
 		4000: Enums.HitType.Blue,
+		LAST_TIME: Enums.HitType.Blue
 	}
 }
 
 var elapsedTime = 0
-var curHit = 0
+var comboStreak = 0
+
+const _score = {
+	"overall": "",
+	"good": 0.0,
+	"ok": 0.0,
+	"bad": 0.0,
+	"maxCombo": 0.0,
+	"accuracy": "",
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,17 +47,34 @@ func _on_Timer_timeout():
 	$HitStream.position.x -= 5;
 	_delete_node()
 	
+	if (elapsedTime == LAST_TIME + 2000):
+		$Timer.stop()
+		print('end of song')
+	
 func _has_hit(drumHit):
 	var node = $HitStream.get_children()[0]
 	print(node.global_position.x - 260)
 	if (node.global_position.x >= 260 && node.global_position.x <= 300 ):
 		node.queue_free()
-		$Combo.text = 'Combo: '
-		$Hit.text = 'HIT'
+		update_combo_streak(1)
+		
+		$Hit.text = 'GOOD'
+		_score.good += 1
 		return true
 		
-	$Hit.text = 'MISS'
+	$Hit.text = 'BAD'
+	_score.bad += 1
+	update_combo_streak(0)
 	return false
+
+func update_combo_streak(comboValue):
+	if comboValue == 0:
+		comboStreak = 0
+		return
+
+	comboStreak += comboValue
+	
+	_score.maxCombo = max(_score.maxCombo, comboStreak)
 
 func _input(event):
 	var isRed = event.is_action_pressed("drum_red")
@@ -57,6 +86,11 @@ func _input(event):
 		print(_has_hit(Enums.HitType.Red))
 	if isBlue:
 		print(_has_hit(Enums.HitType.Blue))
+		
+	$Combo.text = 'Combo: ' + str(comboStreak)
+	
+	$Score.set_scores(_score)
+	$Score.display_all_scores(_score)
 		
 func _create_hit():
 	var key = elapsedTime
