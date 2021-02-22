@@ -28,7 +28,7 @@ const _score = {
 	"ok": 0.0,
 	"bad": 0.0,
 	"maxCombo": 0.0,
-	"accuracy": "",
+	"accuracy": 0.0,
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -53,15 +53,22 @@ func _on_Timer_timeout():
 	
 func _has_hit(drumHit):
 	var node = $HitStream.get_children()[0]
-	print(node.global_position.x - 260)
-	if (node.global_position.x >= 260 && node.global_position.x <= 300 ):
+
+	if (node.global_position.x >= 275 && node.global_position.x <= 285 ):
 		node.queue_free()
 		update_combo_streak(1)
 		
 		$Hit.text = 'GOOD'
 		_score.good += 1
 		return true
+	
+	if (node.global_position.x >= 250 && node.global_position.x <= 310 ):
+		node.queue_free()
+		update_combo_streak(1)
 		
+		$Hit.text = 'OK'
+		_score.good += 1
+		return true
 	$Hit.text = 'BAD'
 	_score.bad += 1
 	update_combo_streak(0)
