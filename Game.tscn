@@ -3,12 +3,12 @@
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/pngwing.com.png" type="Texture" id=2]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.221557, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.263473, 0.263473, 0.263473, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,7 +18,7 @@ position = Vector2( 280, 281.27 )
 scale = Vector2( 0.1, 0.1 )
 z_index = -7
 texture = ExtResource( 2 )
-normal_map = SubResource( 3 )
+normal_map = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.001
@@ -26,4 +26,23 @@ autostart = true
 
 [node name="HitStream" type="Node2D" parent="."]
 position = Vector2( 1090, 285.645 )
+
+[node name="Combo" type="Label" parent="."]
+margin_left = 461.5
+margin_top = 26.5
+margin_right = 514.5
+margin_bottom = 40.5
+text = "Combo: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hit" type="Label" parent="."]
+margin_left = 245.5
+margin_top = 195.0
+margin_right = 285.5
+margin_bottom = 209.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -4,7 +4,6 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
 var drumObject = preload("res://Scripts/drum.gd")
 
 const songFile = {
@@ -41,10 +40,12 @@ func _has_hit(drumHit):
 	print(node.global_position.x - 260)
 	if (node.global_position.x >= 260 && node.global_position.x <= 300 ):
 		node.queue_free()
+		$Combo.text = 'Combo: '
+		$Hit.text = 'HIT'
 		return true
-	return false
 		
-	
+	$Hit.text = 'MISS'
+	return false
 
 func _input(event):
 	var isRed = event.is_action_pressed("drum_red")
