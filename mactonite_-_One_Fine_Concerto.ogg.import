@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mactonite_-_One_Fine_Concerto.ogg-dc2f46881869dd10f580a47f6bd6d2e8.oggstr"
+
+[deps]
+
+source_file="res://mactonite_-_One_Fine_Concerto.ogg"
+dest_files=[ "res://.import/mactonite_-_One_Fine_Concerto.ogg-dc2f46881869dd10f580a47f6bd6d2e8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
