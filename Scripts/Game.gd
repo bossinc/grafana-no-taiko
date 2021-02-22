@@ -126,11 +126,14 @@ func _on_Timer_timeout():
 	$Score.display_all_scores(_score)
 
 	
+const goodRange = 25
+const okRange = 50
+
 func _has_hit(drumHit):
 	var node = $HitStream.get_children()[0]
 	print(node.global_position.x - 260)
-	var goalXLate = $goal.global_position.x - 25
-	var goalXEarly = $goal.global_position.x + 25
+	var goalXLate = $goal.global_position.x - goodRange
+	var goalXEarly = $goal.global_position.x + goodRange
 	if (node.global_position.x >= goalXLate && node.global_position.x <= goalXEarly):
 		node.queue_free()
 		update_combo_streak(1)
@@ -139,7 +142,9 @@ func _has_hit(drumHit):
 		_score.good += 1
 		return true
 	
-	if (node.global_position.x >= 250 && node.global_position.x <= 310 ):
+	goalXLate = $goal.global_position.x - okRange
+	goalXEarly = $goal.global_position.x + okRange
+	if (node.global_position.x >= goalXLate && node.global_position.x <= goalXEarly ):
 		node.queue_free()
 		update_combo_streak(1)
 		
