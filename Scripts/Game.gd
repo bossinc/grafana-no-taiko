@@ -54,7 +54,9 @@ func _on_Timer_timeout():
 func _has_hit(drumHit):
 	var node = $HitStream.get_children()[0]
 	print(node.global_position.x - 260)
-	if (node.global_position.x >= 260 && node.global_position.x <= 300 ):
+	var goalXLate = $goal.global_position.x - 20
+	var goalXEarly = $goal.global_position.x + 20
+	if (node.global_position.x >= goalXLate && node.global_position.x <= goalXEarly):
 		node.queue_free()
 		update_combo_streak(1)
 		
@@ -87,7 +89,7 @@ func _input(event):
 	if isBlue:
 		print(_has_hit(Enums.HitType.Blue))
 		
-	$Combo.text = 'Combo: ' + str(comboStreak)
+	$Combo.text = str(comboStreak)
 	
 	$Score.set_scores(_score)
 	$Score.display_all_scores(_score)
