@@ -119,6 +119,11 @@ func _on_Timer_timeout():
 	_create_hit()
 	$HitStream.position.x -= SONG_VELOCITY;
 	_delete_node()
+	
+	$Combo.text = 'Combo: ' + str(comboStreak)
+	
+	$Score.set_scores(_score)
+	$Score.display_all_scores(_score)
 
 	
 func _has_hit(drumHit):
@@ -141,10 +146,12 @@ func _has_hit(drumHit):
 		$Hit.text = 'OK'
 		_score.good += 1
 		return true
+	_miss()
+
+func _miss():
 	$Hit.text = 'BAD'
 	_score.bad += 1
 	update_combo_streak(0)
-	return false
 
 func update_combo_streak(comboValue):
 	if comboValue == 0:
@@ -171,9 +178,6 @@ func _input(event):
 		
 	$Combo.text = str(comboStreak)
 	
-	$Score.set_scores(_score)
-	$Score.display_all_scores(_score)
-		
 func _create_hit():
 	var key = elapsedTime
 	
@@ -192,3 +196,4 @@ func _delete_node():
 	var node = $HitStream.get_children()[0]
 	if (node.global_position.x <= 200):
 		node.queue_free()
+		_miss()
