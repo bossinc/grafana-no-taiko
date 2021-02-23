@@ -16,11 +16,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Taiko-godot"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Start.tscn"
 
 [autoload]
 
-Enums="*res://Scripts/enums.gd"
+global="*res://Scripts/global.gd"
 
 [input]
 
@@ -31,7 +31,7 @@ drum_red={
 }
 drum_blue={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":76,"unicode":0,"echo":false,"script":null)
  ]
 }
 
