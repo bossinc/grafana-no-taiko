@@ -5,7 +5,7 @@
 [ext_resource path="res://Score.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/background.png" type="Texture" id=4]
 [ext_resource path="res://game_font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://gurafana-chan.png" type="Texture" id=6]
+[ext_resource path="res://gurahana-clean.png" type="Texture" id=6]
 [ext_resource path="res://Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/montreal/Montreal-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://mactonite_-_One_Fine_Concerto.ogg" type="AudioStream" id=8]
 
@@ -73,8 +73,8 @@ __meta__ = {
 visible = false
 position = Vector2( 380, 401.386 )
 
-[node name="gurafana-chan" type="Sprite" parent="."]
-position = Vector2( 130.85, 428.133 )
+[node name="gurahana-clean" type="Sprite" parent="."]
+position = Vector2( 130.765, 431.049 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
