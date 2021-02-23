@@ -3,7 +3,7 @@
 [ext_resource path="res://Score.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/background_start.png" type="Texture" id=2]
 [ext_resource path="res://End.gd" type="Script" id=3]
-[ext_resource path="res://gurafana-chan.png" type="Texture" id=4]
+[ext_resource path="res://gurahana-clean.png" type="Texture" id=4]
 [ext_resource path="res://game_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://button.png" type="Texture" id=6]
 
@@ -16,8 +16,8 @@ script = ExtResource( 3 )
 position = Vector2( -37.5702, -217.23 )
 scale = Vector2( 0.3, 0.3 )
 
-[node name="gurafana-chan" type="Sprite" parent="."]
-position = Vector2( -248.17, 35.734 )
+[node name="gurahana-clean" type="Sprite" parent="."]
+position = Vector2( -248.342, 37.4582 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
